@@ -42,4 +42,15 @@ export class AppService {
     target.clicks += 1;
     await this.shortnerRepository.update(target.id, { clicks: target.clicks });
   }
+
+  async redirectToUrl(req: Request): Promise<string> {
+    const shortUrl = 'localhost:3000/' + req.params.url;
+    const target = await this.shortnerRepository.findOneBy({ shortUrl });
+    if (!target) {
+      throw new HttpException('Not Found', 404);
+    }
+    target.clicks += 1;
+    await this.shortnerRepository.update(target.id, { clicks: target.clicks });
+    return target.url;
+  }
 }
