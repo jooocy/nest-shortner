@@ -34,7 +34,7 @@ export class AppController {
   async redirectToUrl(@Req() req: Request, @Res() res: Response) {
     const redirectUrl = await this.appService.redirectToUrl(req);
     console.log(redirectUrl);
-    return res.redirect(redirectUrl);
+    return res.redirect(302, redirectUrl);
   }
 
   @Get()
