@@ -24,7 +24,6 @@ export class AppController {
   deleteOneUrl(@Body('url') url: string) {
     this.appService.deleteOneUrl(url);
   }
-
   @Patch()
   aupClickedUrl(@Body('url') url: string) {
     this.appService.upClickedUrl(url);
